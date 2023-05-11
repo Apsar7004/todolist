@@ -7,20 +7,14 @@ const { string } = require("css-tree");
 const date = require(__dirname + "/date.js");
 const _=require("lodash");
 require('dotenv').config()
-//console.log(process.env.mongo_url)
+
 
 const PORT=process.env.Port || 3000;
 
-const connectDB=async()=>{
-  try{
-    const conn =await mongoose.connect(process.env.mongo_url);
-  }
-  else
-  {
-    console.log(error);
-    process.exit(1);
-  }
-}
+const connectDB= mongoose.connect(process.env.mongo_url);
+
+
+
 
 const app = express();
 
@@ -189,7 +183,7 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-connectDB().then(()=>{
+connectDB.then(()=>{
   app.listen(PORT, function() {
     console.log("Server started on port 3000");
   })
