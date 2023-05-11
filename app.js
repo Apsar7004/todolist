@@ -6,12 +6,21 @@ const mongoose=require("mongoose");
 const { string } = require("css-tree");
 const date = require(__dirname + "/date.js");
 const _=require("lodash");
-require('dotenv').config()
+require('dotenv').config();
 
 
-const PORT=process.env.Port || 3000;
+const PORT=process.env.PORT || 3000;
+mongoose.set('strictQuery',false);
+const connectDB =async()=>{
+  try{
+    const conn=await mongoose.connect(process.env.MONGO_URI);
+    console.log (`mongoDB Connected : ${conn.connection.host}`);
+  }catch(error){
+    console.log(error);
+    process.exit(1);
+  }
+}
 
-mongoose.connect(process.env.mongo_url);
 
 
 
@@ -183,7 +192,11 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-  app.listen(PORT, function() {
-    console.log("Server started on port 3000");
+connectDB().then(()=>{
+  app.listen(PORT, ()=> {
+    console.log(`Server started on port ${PORT} `);
   })
+});
+
+ 
 
