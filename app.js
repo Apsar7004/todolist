@@ -1,6 +1,6 @@
 //jshint esversion:6
 
-const https=requir("https");
+const https=require("https");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose=require("mongoose");
