@@ -11,7 +11,7 @@ require('dotenv').config()
 
 const PORT=process.env.Port || 3000;
 
-const connectDB= mongoose.connect(process.env.mongo_url);
+mongoose.connect(process.env.mongo_url);
 
 
 
@@ -183,9 +183,7 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-connectDB.then(()=>{
   app.listen(PORT, function() {
     console.log("Server started on port 3000");
   })
-})
 
