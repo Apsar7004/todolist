@@ -11,7 +11,16 @@ require('dotenv').config()
 
 const PORT=process.env.Port || 3000;
 
-mongoose.connect(process.env.mongo_url);
+const connectDB=async()=>{
+  try{
+    const conn =await mongoose.connect(process.env.mongo_url);
+  }
+  else
+  {
+    console.log(error);
+    process.exit(1);
+  }
+}
 
 const app = express();
 
@@ -180,6 +189,9 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-app.listen(PORT, function() {
-  console.log("Server started on port 3000");
+connectDB().then(()=>{
+  app.listen(PORT, function() {
+    console.log("Server started on port 3000");
+  })
 })
+
