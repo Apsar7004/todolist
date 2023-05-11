@@ -8,14 +8,14 @@ const { string } = require("css-tree");
 const date = require(__dirname + "/date.js");
 const _=require("lodash");
 require('dotenv').config();
-
+const val=process.env.MONGO_URI;
 
 const PORT=process.env.PORT || 3000;
 mongoose.set('strictQuery',false);
 const connectDB =async()=>{
   try{
-    const conn=await mongoose.connect('mongodb+srv://apsar7004:ap123@cluster0.foazccj.mongodb.net/todolistDB');
-    console.log (`mongoDB Connected : ${conn.connection.host}`);
+    const conn=await mongoose.connect(val);
+    console.log (val);
   }catch(error){
     console.log(error);
     process.exit(1);
