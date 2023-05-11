@@ -1,9 +1,5 @@
 //jshint esversion:6
-<<<<<<< HEAD
-const csstree = require('css-tree');
-=======
-
->>>>>>> 34eeed9454ffbd9f803e2b96aa6f84430d5b19cd
+const csstree = require('css-tree')
 const https=require("https");
 const express = require("express");
 const bodyParser = require("body-parser");
