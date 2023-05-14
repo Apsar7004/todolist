@@ -1,4 +1,6 @@
 //jshint esversion:6
+
+require('dotenv').config();
 const csstree = require('css-tree')
 const https=require("https");
 const express = require("express");
@@ -7,7 +9,7 @@ const mongoose=require("mongoose");
 const { string } = require("css-tree");
 const date = require(__dirname + "/date.js");
 const _=require("lodash");
-require('dotenv').config();
+
 const val=process.env.MONGO_URI;
 
 const PORT=process.env.PORT || 3000;
