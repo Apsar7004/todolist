@@ -16,7 +16,7 @@ const PORT=process.env.PORT || 3000;
 mongoose.set('strictQuery',false);
 const connectDB =async()=>{
   try{
-    const conn=await mongoose.connect(val);
+    const conn=await mongoose.connect('val');
     console.log (val);
   }catch(error){
     console.log(error);
